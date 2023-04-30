@@ -28,6 +28,7 @@ import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import me.rerere.awara.ui.component.common.DialogProvider
 import me.rerere.awara.ui.component.common.MessageProvider
 import me.rerere.awara.ui.page.favorites.FavoritesPage
+import me.rerere.awara.ui.page.follow.FollowPage
 import me.rerere.awara.ui.page.history.HistoryPage
 import me.rerere.awara.ui.page.image.ImagePage
 import me.rerere.awara.ui.page.index.IndexPage
@@ -148,6 +149,17 @@ class RouterActivity : ComponentActivity() {
 
                 composable("user/{id}") {
                     UserPage()
+                }
+
+                composable(
+                    route = "user/{userId}/follow",
+                    arguments = listOf(
+                        navArgument("userId") {
+                            type = NavType.StringType
+                        }
+                    )
+                ) {
+                    FollowPage()
                 }
 
                 composable(

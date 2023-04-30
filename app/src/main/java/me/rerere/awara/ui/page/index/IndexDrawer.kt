@@ -110,7 +110,10 @@ fun ColumnScope.IndexDrawer(vm: IndexVM) {
                 .padding(horizontal = 8.dp),
         ) {
             Card(
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
+                onClick = {
+                    router.navigate("user/${userState.user?.id}/follow")
+                }
             ) {
                 Column(
                     modifier = Modifier
@@ -129,7 +132,10 @@ fun ColumnScope.IndexDrawer(vm: IndexVM) {
             }
 
             Card(
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f),
+                onClick = {
+                    router.navigate("user/${userState.user?.id}/follow")
+                }
             ) {
                 Column(
                     modifier = Modifier

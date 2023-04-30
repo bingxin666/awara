@@ -1,6 +1,7 @@
 package me.rerere.awara.di
 
 import me.rerere.awara.ui.page.favorites.FavoritesVM
+import me.rerere.awara.ui.page.follow.FollowVM
 import me.rerere.awara.ui.page.history.HistoryVM
 import me.rerere.awara.ui.page.image.ImageVM
 import me.rerere.awara.ui.page.index.IndexVM
@@ -22,4 +23,5 @@ val viewModelModule = module {
     viewModelOf(::PlaylistDetailVM)
     viewModelOf(::PlaylistsVM)
     viewModelOf(::FavoritesVM)
+    viewModelOf(::FollowVM)
 }

@@ -38,4 +38,5 @@
     <string name="errors_private_video">この動画はプライベートです。</string>
     <string name="update_title">利用可能な新しいバージョン: %s</string>
     <string name="update_confirm">アップデート</string>
+    <string name="follow_title">フォローとファン</string>
 </resources>
