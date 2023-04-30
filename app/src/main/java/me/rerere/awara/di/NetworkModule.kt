@@ -2,7 +2,7 @@ package me.rerere.awara.di
 
 import me.rerere.awara.data.source.HitokotoAPI
 import me.rerere.awara.data.source.IwaraAPI
-import me.rerere.awara.data.source.UpdateChecker
+import me.rerere.awara.data.source.UpdateAPI
 import me.rerere.awara.util.SerializationConverterFactory
 import me.rerere.compose_setting.preference.mmkvPreference
 import okhttp3.OkHttpClient
@@ -94,6 +94,11 @@ val networkModule = module {
     }
 
     single {
-        UpdateChecker(get())
+        Retrofit.Builder()
+            .client(get())
+            .baseUrl("https://33jltt4ir7m3j2jst7g3kurrbu0qfqrt.lambda-url.ap-southeast-2.on.aws")
+            .addConverterFactory(SerializationConverterFactory.create())
+            .build()
+            .create(UpdateAPI::class.java)
     }
 }

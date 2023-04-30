@@ -13,7 +13,7 @@ import me.rerere.awara.R
 import me.rerere.awara.data.entity.Media
 import me.rerere.awara.data.repo.MediaRepo
 import me.rerere.awara.data.repo.UserRepo
-import me.rerere.awara.data.source.UpdateChecker
+import me.rerere.awara.data.source.UpdateAPI
 import me.rerere.awara.data.source.onError
 import me.rerere.awara.data.source.onException
 import me.rerere.awara.data.source.onSuccess
@@ -27,7 +27,7 @@ private const val TAG = "IndexVM"
 class IndexVM(
     private val userRepo: UserRepo,
     private val mediaRepo: MediaRepo,
-    private val updateChecker: UpdateChecker
+    private val updateChecker: UpdateAPI
 ) : ViewModel() {
     var state by mutableStateOf(IndexState())
         private set
@@ -48,8 +48,11 @@ class IndexVM(
     private fun checkUpdate() {
         viewModelScope.launch {
             kotlin.runCatching {
-                val (code, name, changes) = updateChecker.getLatestVersion()
+                val (code, name, changes) = updateChecker.checkUpdate()
                 events.emit(IndexEvent.ShowUpdateDialog(code, name, changes))
+                Log.i(TAG, "checkUpdate: $code $name $changes")
+            }.onFailure {
+                Log.e(TAG, "checkUpdate: ", it)
             }
         }
     }

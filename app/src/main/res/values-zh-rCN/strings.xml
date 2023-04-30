@@ -38,4 +38,6 @@
     <string name="dislike">取消喜欢</string>
     <string name="private_badge">私享</string>
     <string name="errors_private_video">这是一个私人视频</string>
+    <string name="update_title">发现更新: %s</string>
+    <string name="update_confirm">下载更新</string>
 </resources>

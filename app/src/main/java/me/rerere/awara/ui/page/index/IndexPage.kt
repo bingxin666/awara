@@ -54,16 +54,19 @@ private fun UpdateCheck(vm: IndexVM) {
                     if (it.code > context.versionCode) {
                         dialog.show(
                             title = {
-                                Text("New Version Available: ${it.version}")
+                                Text(stringResource(R.string.update_title, it.version))
                             },
                             content = {
-                                RichText(text = it.changes, onLinkClick = { context.openUrl(it) })
+                                RichText(
+                                    text = it.changes,
+                                    onLinkClick = { context.openUrl(it) }
+                                )
                             },
                             positiveAction = {
                                 context.openUrl(DOWNLOAD_LINK)
                             },
                             positiveText = {
-                                Text("Update")
+                                Text(stringResource(R.string.update_confirm))
                             }
                         )
                     }
