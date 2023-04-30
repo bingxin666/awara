@@ -89,6 +89,7 @@ class IndexVM(
                 }.onSuccess {
                     Log.i(TAG, "loadCounts: following count: $it")
                 }.onException {
+                    it.exception.printStackTrace()
                     Log.i(TAG, "loadCounts: $it")
                 }
             }
