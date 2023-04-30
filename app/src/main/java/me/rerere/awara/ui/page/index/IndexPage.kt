@@ -41,7 +41,7 @@ fun IndexPage(
     UpdateCheck(vm)
 }
 
-private const val DOWNLOAD_LINK = "https://github.com/re-ovo/awara/releases"
+private const val DOWNLOAD_LINK = "https://github.com/awara-app/awara/releases"
 
 @Composable
 private fun UpdateCheck(vm: IndexVM) {
