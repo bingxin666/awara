@@ -91,7 +91,10 @@ fun SearchPage(vm: SearchVM = koinViewModel()) {
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth(),
-                state = vm.state.uiState
+                state = vm.state.uiState,
+                onErrorRetry = {
+                    vm.search()
+                }
             ) {
                 LazyVerticalStaggeredGrid(
                     columns = DynamicStaggeredGridCells(150.dp, 2, 4),
