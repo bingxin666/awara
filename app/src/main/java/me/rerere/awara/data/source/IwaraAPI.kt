@@ -182,4 +182,25 @@ interface IwaraAPI {
     suspend fun getFavoriteImages(
         @Query("page") page: Int
     ): Pager<FavoriteImage>
+
+    @GET("/search")
+    suspend fun searchVideo(
+        @Query("type") type: String,
+        @Query("query") query: String,
+        @Query("page") page: Int
+    ): Pager<Video>
+
+    @GET("/search")
+    suspend fun searchImage(
+        @Query("type") type: String,
+        @Query("query") query: String,
+        @Query("page") page: Int
+    ): Pager<Image>
+
+    @GET("/search")
+    suspend fun searchUser(
+        @Query("type") type: String,
+        @Query("query") query: String,
+        @Query("page") page: Int
+    ): Pager<User>
 }

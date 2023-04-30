@@ -3,7 +3,9 @@ package me.rerere.awara.data.repo
 import kotlinx.serialization.decodeFromString
 import me.rerere.awara.data.entity.FavoriteImage
 import me.rerere.awara.data.entity.FavoriteVideo
+import me.rerere.awara.data.entity.Image
 import me.rerere.awara.data.entity.PlaylistCreationDto
+import me.rerere.awara.data.entity.User
 import me.rerere.awara.data.entity.Video
 import me.rerere.awara.data.entity.VideoFile
 import me.rerere.awara.data.entity.signature
@@ -80,4 +82,10 @@ class MediaRepo(
     suspend fun getFavoriteVideos(page: Int): Pager<FavoriteVideo> = iwaraAPI.getFavoriteVideos(page = page)
 
     suspend fun getFavoriteImages(page: Int): Pager<FavoriteImage> = iwaraAPI.getFavoriteImages(page = page)
+
+    suspend fun searchVideo(query: String, page: Int): Pager<Video> = iwaraAPI.searchVideo(query = query, page = page, type = "video")
+
+    suspend fun searchImage(query: String, page: Int): Pager<Image> = iwaraAPI.searchImage(query = query, page = page, type = "image")
+
+    suspend fun searchUser(query: String, page: Int): Pager<User> = iwaraAPI.searchUser(query = query, page = page, type = "user")
 }

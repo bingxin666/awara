@@ -75,7 +75,7 @@ fun BoxScope.ErrorStatus(
 
 @Composable
 fun BoxScope.EmptyStatus(modifier: Modifier = Modifier) {
-    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.cat_tv))
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.coffee))
     val progress by animateLottieCompositionAsState(
         composition = composition,
         iterations = LottieConstants.IterateForever

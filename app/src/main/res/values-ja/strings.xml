@@ -44,4 +44,5 @@
     <string name="online">オンライン</string>
     <string name="offline">オフライン</string>
     <string name="premium">プレミアム</string>
+    <string name="user">ユーザー</string>
 </resources>
