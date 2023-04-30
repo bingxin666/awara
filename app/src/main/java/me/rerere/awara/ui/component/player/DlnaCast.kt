@@ -6,17 +6,17 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import net.mm2d.upnp.ControlPoint
 import net.mm2d.upnp.ControlPointFactory
 import net.mm2d.upnp.Device
+import java.util.concurrent.Executors
 
 private const val TAG = "DlnaCast"
 
+private val disposeScope = Executors.newSingleThreadExecutor()
+
 class DlnaCastState {
-    lateinit var controlPoint : ControlPoint
+    lateinit var controlPoint: ControlPoint
     var initialized = mutableStateOf<Boolean>(false)
 
     val deviceList = mutableStateListOf<Device>()
@@ -50,9 +50,8 @@ fun rememberDlnaCastState(): DlnaCastState {
     val state = remember {
         DlnaCastState()
     }
-    val scope = rememberCoroutineScope()
     DisposableEffect(Unit) {
-        scope.launch(Dispatchers.IO) {
+        disposeScope.execute {
             kotlin.runCatching {
                 state.controlPoint = ControlPointFactory.create()
                 state.controlPoint.addDiscoveryListener(object : ControlPoint.DiscoveryListener {
@@ -68,14 +67,22 @@ fun rememberDlnaCastState(): DlnaCastState {
                 state.controlPoint.start()
                 state.controlPoint.search()
                 state.initialized.value = true
+                Log.i(TAG, "rememberDlnaCastState: initialized")
             }.onFailure {
                 it.printStackTrace()
             }
         }
         onDispose {
-            if(state.initialized.value) {
-                state.controlPoint.stop()
-                state.controlPoint.terminate()
+            disposeScope.execute {
+                kotlin.runCatching {
+                    if (state.initialized.value) {
+                        state.controlPoint.stop()
+                        state.controlPoint.terminate()
+                        Log.i(TAG, "rememberDlnaCastState: disposed")
+                    }
+                }.onFailure {
+                    it.printStackTrace()
+                }
             }
         }
     }

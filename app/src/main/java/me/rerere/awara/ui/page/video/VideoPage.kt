@@ -1,6 +1,7 @@
 package me.rerere.awara.ui.page.video
 
 import android.content.pm.ActivityInfo
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
@@ -24,7 +25,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.media3.common.MediaItem
 import androidx.media3.common.VideoSize
 import androidx.media3.ui.AspectRatioFrameLayout
@@ -62,7 +62,6 @@ fun  VideoPage(vm: VideoVM = koinViewModel()) {
     val state = rememberPlayerState()
     val message = LocalMessageProvider.current
     val scope = rememberCoroutineScope()
-    val context = LocalContext.current
 
     // M3
     val colorState = rememberDynamicColorSchemeState()
@@ -116,6 +115,9 @@ fun  VideoPage(vm: VideoVM = koinViewModel()) {
     fun exitFullScreen() {
         requestOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
         fullscreen = false
+    }
+    BackHandler(fullscreen) {
+        exitFullScreen()
     }
     fun applyUrls(urls: List<VideoFile>) {
         state.updatePlayerItems(
