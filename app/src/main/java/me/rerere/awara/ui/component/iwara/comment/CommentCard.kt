@@ -29,6 +29,7 @@ import me.rerere.awara.data.entity.Comment
 import me.rerere.awara.ui.LocalRouterProvider
 import me.rerere.awara.ui.component.iwara.Avatar
 import me.rerere.awara.ui.component.iwara.RichText
+import me.rerere.awara.ui.component.iwara.UserStatus
 import me.rerere.awara.ui.stores.LocalUserStore
 import me.rerere.awara.ui.stores.collectAsState
 import me.rerere.awara.util.openUrl
@@ -59,15 +60,31 @@ fun CommentCard(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Avatar(user = comment.user, modifier = Modifier.size(32.dp))
-                Text(
-                    text = comment.user?.name ?: "",
-                    color = MaterialTheme.colorScheme.secondary,
-                    style = MaterialTheme.typography.titleLarge,
-                    modifier = Modifier.clickable {
+                Avatar(
+                    user = comment.user,
+                    modifier = Modifier.size(32.dp),
+                    onClick = {
                         router.navigate("user/${comment.user?.username}")
                     }
                 )
+                Column {
+                    Text(
+                        text = comment.user?.name ?: "",
+                        color = MaterialTheme.colorScheme.secondary,
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier.clickable {
+                            router.navigate("user/${comment.user?.username}")
+                        }
+                    )
+                    Text(
+                        text = ("@" + comment.user?.username),
+                        style = MaterialTheme.typography.labelSmall
+                    )
+                }
+
+                comment.user?.let {
+                    UserStatus(user = it)
+                }
 
                 // "Me" Tag
                 if(comment.user?.id == user.user?.id) {

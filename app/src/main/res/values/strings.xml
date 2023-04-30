@@ -42,4 +42,7 @@
     <string name="follow_title">Following and Follower</string>
     <string name="following">Following</string>
     <string name="follower">Follower</string>
+    <string name="online">Online</string>
+    <string name="offline">Offline</string>
+    <string name="premium">Premium</string>
 </resources>

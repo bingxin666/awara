@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
@@ -36,32 +35,37 @@ fun AuthorCard(
             }
         ) {
             Row(
-                modifier = Modifier
-                    .padding(8.dp)
-                    .fillMaxWidth()
-                    .height(IntrinsicSize.Min),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier.padding(8.dp)
             ) {
-                Avatar(
-                    user = user,
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .aspectRatio(1f)
-                )
-
                 Column(
                     modifier = Modifier.weight(1f)
                 ) {
-                    Text(
-                        text = user.name,
-                        style = MaterialTheme.typography.titleMedium,
-                    )
+                    Row(
+                        modifier = Modifier
+                            .height(IntrinsicSize.Min),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        Avatar(
+                            user = user,
+                            modifier = Modifier
+                                .fillMaxHeight()
+                                .aspectRatio(1f),
+                            onClick = {
+                                router.navigate("user/${user.username}")
+                            }
+                        )
 
-                    Text(
-                        text = "@${user.username}",
-                        style = MaterialTheme.typography.labelMedium,
-                    )
+                        Column(
+                            modifier = Modifier
+                        ) {
+                            Text(
+                                text = user.name,
+                                style = MaterialTheme.typography.titleMedium,
+                            )
+                            UserStatus(user = user, modifier = Modifier.padding(top = 4.dp))
+                        }
+                    }
                 }
 
                 onClickSub?.let {

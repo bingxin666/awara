@@ -43,4 +43,7 @@
     <string name="follow_title">关注和粉丝</string>
     <string name="following">关注中</string>
     <string name="follower">粉丝</string>
+    <string name="online">在线</string>
+    <string name="offline">离线</string>
+    <string name="premium">会员</string>
 </resources>

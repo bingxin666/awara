@@ -34,7 +34,7 @@ fun Tag(
         color = surfaceColor,
         contentColor = surfaceColor.bestTextColor
     ) {
-        ProvideTextStyle(MaterialTheme.typography.labelMedium) {
+        ProvideTextStyle(MaterialTheme.typography.labelSmall) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(4.dp),
                 modifier = Modifier.padding(4.dp)

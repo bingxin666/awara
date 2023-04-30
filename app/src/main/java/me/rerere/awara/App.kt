@@ -55,6 +55,7 @@ class App : Application(), ImageLoaderFactory, KoinComponent {
                     .maxSizePercent(0.02)
                     .build()
             }
+            .fallback(R.drawable.default_background)
             .error(R.drawable.cancel)
             .build()
     }

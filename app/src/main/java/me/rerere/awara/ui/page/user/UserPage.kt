@@ -61,6 +61,7 @@ import me.rerere.awara.ui.component.iwara.Avatar
 import me.rerere.awara.ui.component.iwara.MediaCard
 import me.rerere.awara.ui.component.iwara.PaginationBar
 import me.rerere.awara.ui.component.iwara.RichText
+import me.rerere.awara.ui.component.iwara.UserStatus
 import me.rerere.awara.util.openUrl
 import org.koin.androidx.compose.koinViewModel
 
@@ -212,6 +213,10 @@ private fun UserCard(
                     text = "@" + (profileState?.user?.username ?: ""),
                     style = MaterialTheme.typography.labelMedium
                 )
+
+                profileState?.user?.let {
+                    UserStatus(user = it)
+                }
             }
 
             Spacer(modifier = Modifier.weight(1f))
@@ -265,6 +270,7 @@ private fun UserCard(
                     .clickable {
                         onChangeExpand(!expand)
                     }
+                    .padding(4.dp)
             )
         }
     }

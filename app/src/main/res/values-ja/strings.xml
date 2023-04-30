@@ -41,4 +41,7 @@
     <string name="follow_title">フォローとファン</string>
     <string name="following">購読リスト</string>
     <string name="follower">ファン</string>
+    <string name="online">オンライン</string>
+    <string name="offline">オフライン</string>
+    <string name="premium">プレミアム</string>
 </resources>
