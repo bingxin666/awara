@@ -32,8 +32,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import me.rerere.awara.R
 import me.rerere.awara.ui.LocalMessageProvider
 import me.rerere.awara.ui.LocalRouterProvider
 import me.rerere.awara.ui.component.iwara.Avatar
@@ -125,7 +127,7 @@ fun ColumnScope.IndexDrawer(vm: IndexVM) {
                         style = MaterialTheme.typography.titleLarge
                     )
                     Text(
-                        text = "关注中",
+                        text = stringResource(R.string.following),
                         style = MaterialTheme.typography.labelLarge
                     )
                 }
@@ -147,7 +149,7 @@ fun ColumnScope.IndexDrawer(vm: IndexVM) {
                         style = MaterialTheme.typography.titleLarge
                     )
                     Text(
-                        text = "粉丝",
+                        text = stringResource(R.string.follower),
                         style = MaterialTheme.typography.labelLarge
                     )
                 }
@@ -168,7 +170,7 @@ fun ColumnScope.IndexDrawer(vm: IndexVM) {
                             style = MaterialTheme.typography.titleLarge
                         )
                         Text(
-                            text = "好友",
+                            text = stringResource(R.string.friends),
                             style = MaterialTheme.typography.labelLarge
                         )
                     }
@@ -193,7 +195,7 @@ fun ColumnScope.IndexDrawer(vm: IndexVM) {
                 Icon(Icons.Outlined.FavoriteBorder, "Favorite")
             },
             label = {
-                Text("喜欢")
+                Text(stringResource(R.string.drawer_favorite))
             },
             onClick = {
                 router.navigate("favorites")
@@ -207,7 +209,7 @@ fun ColumnScope.IndexDrawer(vm: IndexVM) {
                 Icon(Icons.Outlined.FeaturedPlayList, "PlayList")
             },
             label = {
-                Text("播单")
+                Text(stringResource(R.string.drawer_playlists))
             },
             onClick = {
                 userState.user?.id?.let { userId ->
@@ -222,7 +224,7 @@ fun ColumnScope.IndexDrawer(vm: IndexVM) {
             Icon(Icons.Outlined.Download, "Downloads")
         },
         label = {
-            Text("下载")
+            Text(stringResource(R.string.drawer_downloads))
         },
         onClick = {}
     )
@@ -232,7 +234,7 @@ fun ColumnScope.IndexDrawer(vm: IndexVM) {
             Icon(Icons.Outlined.History, "History")
         },
         label = {
-            Text("历史记录")
+            Text(stringResource(R.string.drawer_history))
         },
         onClick = {
             router.navigate("history")
@@ -244,7 +246,7 @@ fun ColumnScope.IndexDrawer(vm: IndexVM) {
             Icon(Icons.Outlined.Settings, "Settings")
         },
         label = {
-            Text("设置")
+            Text(stringResource(R.string.drawer_setting))
         },
         onClick = {
             router.navigate("setting")

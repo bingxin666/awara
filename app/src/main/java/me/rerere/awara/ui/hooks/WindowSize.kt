@@ -13,4 +13,3 @@ fun rememberWindowSizeClass(): WindowSizeClass {
         context.findActivity()
     )
 }
-

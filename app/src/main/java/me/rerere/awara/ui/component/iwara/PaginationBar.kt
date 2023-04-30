@@ -5,12 +5,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.KeyboardArrowLeft
 import androidx.compose.material.icons.outlined.KeyboardArrowRight
@@ -61,27 +57,28 @@ fun PaginationBar(
                 leading()
             }
 
-            Spacer(modifier = Modifier.weight(1f))
-
             // Current page
             Text(
                 text = stringResource(R.string.pagination_current, page, maxPage),
-                modifier = Modifier.clickable {
-                    dialog.input(
-                        title = {
-                            Text("Jump to page")
-                        }
-                    ) {
-                        val target = it.toIntOrNull()
-                        if (target != null && target in 1..maxPage) {
-                            onPageChange(target)
-                        } else {
-                            message.error {
-                                Text("Invalid page number: $it")
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable {
+                        dialog.input(
+                            title = {
+                                Text("Jump to page")
+                            }
+                        ) {
+                            val target = it.toIntOrNull()
+                            if (target != null && target in 1..maxPage) {
+                                onPageChange(target)
+                            } else {
+                                message.error {
+                                    Text("Invalid page number: $it")
+                                }
                             }
                         }
-                    }
-                }
+                    },
+                maxLines = 1,
             )
 
             // Previous page

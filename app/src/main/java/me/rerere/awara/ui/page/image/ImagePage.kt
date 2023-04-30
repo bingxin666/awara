@@ -126,17 +126,19 @@ fun ImagePage(vm: ImageVM = koinViewModel()) {
                                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                             ) {
                                 Text(
-                                    text = "Views: ${state.state?.numViews?.toString() ?: ""}",
-                                    style = MaterialTheme.typography.labelMedium
-                                )
-
-                                Text(
-                                    text = "Likes ${state.state?.numLikes?.toString() ?: ""}",
-                                    style = MaterialTheme.typography.labelMedium
-                                )
-
-                                Text(
                                     text = state.state?.createdAt?.toLocalDateTimeString() ?: "",
+                                    style = MaterialTheme.typography.labelMedium
+                                )
+
+                                Spacer(modifier = Modifier.weight(1f))
+
+                                Text(
+                                    text = stringResource(R.string.num_likes, state.state?.numLikes ?: 0),
+                                    style = MaterialTheme.typography.labelMedium
+                                )
+
+                                Text(
+                                    text = stringResource(R.string.num_views, state.state?.numViews ?: 0),
                                     style = MaterialTheme.typography.labelMedium
                                 )
                             }

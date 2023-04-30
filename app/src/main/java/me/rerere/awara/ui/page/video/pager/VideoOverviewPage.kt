@@ -186,11 +186,11 @@ private fun VideoInfoCard(video: Video, vm: VideoVM) {
                     Spacer(modifier = Modifier.weight(1f))
 
                     Text(
-                        text = "喜欢: " + video.numLikes.toString()
+                        text = stringResource(R.string.num_likes, video.numLikes)
                     )
 
                     Text(
-                        text = "播放: " + video.numViews.toString(),
+                        text = stringResource(R.string.num_views, video.numViews),
                     )
                 }
             }

@@ -46,4 +46,17 @@
     <string name="offline">Offline</string>
     <string name="premium">Premium</string>
     <string name="user">User</string>
+    <string name="num_likes">Likes: %d</string>
+    <string name="num_views">Views: %d</string>
+    <string name="sort_date">Date</string>
+    <string name="sort_trending">Trending</string>
+    <string name="sort_popularity">Popularity</string>
+    <string name="sort_views">Views</string>
+    <string name="sort_likes">Likes</string>
+    <string name="drawer_favorite">Favorites</string>
+    <string name="drawer_playlists">Playlists</string>
+    <string name="drawer_downloads">Downloads</string>
+    <string name="drawer_history">History</string>
+    <string name="drawer_setting">Settings</string>
+    <string name="friends">Friends</string>
 </resources>

@@ -8,13 +8,15 @@ import androidx.compose.material.icons.outlined.RemoveRedEye
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.ui.res.stringResource
+import me.rerere.awara.R
 import me.rerere.awara.ui.component.iwara.param.SortOption
 
 val MediaSortOptions = listOf(
     SortOption(
         name = "date",
         label = {
-            Text("最新")
+            Text(stringResource(R.string.sort_date))
         },
         icon = {
             Icon(Icons.Outlined.CalendarMonth, null)
@@ -23,7 +25,7 @@ val MediaSortOptions = listOf(
     SortOption(
         name = "trending",
         label = {
-            Text("流行")
+            Text(stringResource(R.string.sort_trending))
         },
         icon = {
             Icon(Icons.Outlined.LocalFireDepartment, null)
@@ -32,7 +34,7 @@ val MediaSortOptions = listOf(
     SortOption(
         name = "popularity",
         label = {
-            Text("人气")
+            Text(stringResource(R.string.sort_popularity))
         },
         icon = {
             Icon(Icons.Outlined.Star, null)
@@ -41,7 +43,7 @@ val MediaSortOptions = listOf(
     SortOption(
         name = "views",
         label = {
-            Text("观看")
+            Text(stringResource(R.string.sort_views))
         },
         icon = {
             Icon(Icons.Outlined.RemoveRedEye, null)
@@ -50,7 +52,7 @@ val MediaSortOptions = listOf(
     SortOption(
         name = "likes",
         label = {
-            Text("喜欢")
+            Text(stringResource(R.string.sort_likes))
         },
         icon = {
             Icon(Icons.Outlined.Favorite, null)
