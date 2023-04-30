@@ -5,11 +5,11 @@
 # For more details, see
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
--keepattributes SourceFile,LineNumberTable
--keepattributes Signature
--keepattributes *Annotation*
-
+-keepattributes SourceFile,LineNumberTable,Signature,*Annotation*
 -dontobfuscate
+
+# Keep Coil
+-keep class coil.** { *; }
 
 # Kotlin serialization looks up the generated serializer classes through a function on companion
 # objects. The companions are looked up reflectively so we need to explicitly keep these functions.
