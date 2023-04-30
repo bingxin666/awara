@@ -40,4 +40,6 @@
     <string name="update_title">New version available: %s</string>
     <string name="update_confirm">Update</string>
     <string name="follow_title">Following and Follower</string>
+    <string name="following">Following</string>
+    <string name="follower">Follower</string>
 </resources>

@@ -60,7 +60,7 @@ fun FollowPage(vm: FollowVM = koinViewModel()) {
                     selected = pagerState.currentPage == 0,
                     onClick = { scope.launch { pagerState.animateScrollToPage(0) } },
                     text = {
-                        Text("Following")
+                        Text(stringResource(R.string.following))
                     }
                 )
 
@@ -68,7 +68,7 @@ fun FollowPage(vm: FollowVM = koinViewModel()) {
                     selected = pagerState.currentPage == 1,
                     onClick = { scope.launch { pagerState.animateScrollToPage(1) } },
                     text = {
-                        Text("Follower")
+                        Text(stringResource(R.string.follower))
                     }
                 )
             }

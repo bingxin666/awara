@@ -41,4 +41,6 @@
     <string name="update_title">发现更新: %s</string>
     <string name="update_confirm">下载更新</string>
     <string name="follow_title">关注和粉丝</string>
+    <string name="following">关注中</string>
+    <string name="follower">粉丝</string>
 </resources>
