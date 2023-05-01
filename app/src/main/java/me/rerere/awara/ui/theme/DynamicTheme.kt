@@ -81,8 +81,6 @@ class DynamicThemeState : KoinComponent {
                     lightScheme = Scheme.light(seedColor).toColorScheme()
                     darkScheme = Scheme.dark(seedColor).toColorScheme()
 
-                    bitmap.recycle()
-
                     Log.i(TAG, "updateColorScheme: 设置完成 $seedColor ${bitmap.config}")
                 }
             }
