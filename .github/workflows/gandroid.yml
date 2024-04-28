@@ -29,7 +29,7 @@ jobs:
       run: chmod +x gradlew
       
     - name: Build with Gradle
-      run: ./gradlew :app:synthesizeDistReleaseApksCI :app:extractReleaseNativeDebugMetadata
+      run: ./gradlew build
           ccache -s
           echo "APK_FILE_ARM32=$(find app/build/outputs/ci -name '*arm32.apk')" >> $GITHUB_ENV
           echo "APK_FILE_ARM64=$(find app/build/outputs/ci -name '*arm64.apk')" >> $GITHUB_ENV
