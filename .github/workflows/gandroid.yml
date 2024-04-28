@@ -29,32 +29,12 @@ jobs:
       run: chmod +x gradlew
       
     - name: Build with Gradle
-      run: ./gradlew build
-          ccache -s
-          echo "APK_FILE_ARM32=$(find app/build/outputs/ci -name '*arm32.apk')" >> $GITHUB_ENV
-          echo "APK_FILE_ARM64=$(find app/build/outputs/ci -name '*arm64.apk')" >> $GITHUB_ENV
-          echo "APK_FILE_ARMALL=$(find app/build/outputs/ci -name '*armAll.apk')" >> $GITHUB_ENV
-          echo "APK_FILE_UNIVERSAL=$(find app/build/outputs/ci -name '*universal.apk')" >> $GITHUB_ENV
+      run: ./gradlew assembleRelease
 
-    - name: Upload Artifacts(arm32)
-      uses: actions/upload-artifact@v4
+    - name: Upload APK
+      uses: actions/upload-artifact@v2
       with:
-        path: ${{ env.APK_FILE_ARM32 }}
-        name: Awara-release-${{ github.event.head_commit.id }}-arm32
-    - name: Upload Artifacts(arm64)
-      uses: actions/upload-artifact@v4
-      with:
-        path: ${{ env.APK_FILE_ARM64 }}
-        name: Awara-release-${{ github.event.head_commit.id }}-arm64
-    - name: Upload Artifacts(armAll)
-      uses: actions/upload-artifact@v4
-      with:
-        path: ${{ env.APK_FILE_ARMALL }}
-        name: Awara-release-${{ github.event.head_commit.id }}-armAll
-    - name: Upload Artifacts(universal)
-      uses: actions/upload-artifact@v4
-      with:
-        path: ${{ env.APK_FILE_UNIVERSAL }}
-        name: Awara-release-${{ github.event.head_commit.id }}-universal
+        name: app
+        path: app/build/outputs/apk/release/app-release.apk
       
       
